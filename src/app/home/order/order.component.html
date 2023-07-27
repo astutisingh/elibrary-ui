@@ -1,0 +1,68 @@
+<app-header></app-header>
+  <div class="tab" >
+    <div class="mt-10" >
+      <h1>Order History</h1>
+      <div>
+      <table class="table table-bordered" >
+        <thead class="thead">
+          <tr >
+            <th>Order Id</th>
+            <th>Amount Due</th>
+            <th>View Books</th>
+            <th>Order Status</th>
+            <th>Payment Status</th>
+            <th>Action</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody  class="tbody"  *ngFor="let menu  of orderList">
+          <tr >
+            <td>{{menu.orderId}}</td>
+            <td>{{menu.total}}</td>
+            <td>
+                <div *ngFor="let j of menu.cart">
+                  <li><b>Book Name</b> : {{j.book.bookName}}</li>
+                  <li>Book Price : {{j.book.price}}</li>
+                </div>
+            </td>
+            <td>{{menu.status}}</td>
+            <td>{{menu.paymentStatus}}</td>
+            <td>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#PaymentModal" *ngIf="showButton(menu.paymentStatus)" (click)="payOrderById(menu.orderId,menu.username,menu.total)">Pay</button>
+            </td>
+            <td><button type="button" class="btn btn-danger" *ngIf="showButton(menu.paymentStatus)" (click)="deleteOrderById(menu.orderId)" >Delete</button></td>
+
+          </tr>
+     
+          
+        </tbody>
+      </table>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="modal fade" id="PaymentModal" tabindex="-1" role="dialog" aria-labelledby="PaymentModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Payment Gateway</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <h1>Pay Amount of &#8377; {{this.total}}</h1>
+            </div>
+            <div class = "buttons">
+              <button type="submit" class="btn btn-secondary" (click)="payNow()">Pay Now</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>

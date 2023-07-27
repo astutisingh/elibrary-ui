@@ -1,0 +1,58 @@
+<body>
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="card" style="padding: 20px;">
+    <form #updatedForm="ngForm" (ngSubmit)="updatedForm.form.valid && confirmSave(updatedForm)">
+      <div class="form-group">
+        <label for="itemName">Book Name :</label>
+        <input type="text" #bookName [(ngModel)]="bookToUpdate.bookName" name="bookName" id="bookName" class="form-control" placeholder="bookName">
+      
+      </div>
+      <div class="form-group">
+        <label for="price">bookType :</label>
+        <input type="text" #bookType="ngModel" [(ngModel)]="bookToUpdate.bookType" name="bookType" id="bookType" class="form-control"
+          placeholder="bookType"  required>
+          <span class="text-danger"
+                        *ngIf="(bookType.touched || updatedForm.submitted) && bookType.errors?.['required']">
+                        bookType is required
+                    </span>
+      </div>
+      <div class="form-group">
+        <label for="rating">rating :</label>
+        <input type="rating" #rating="ngModel" [(ngModel)]="bookToUpdate.rating" name="rating" id="rating" class="form-control"
+          placeholder="rating" required>
+          <span class="text-danger"
+          *ngIf="(rating.touched || updatedForm.submitted) && rating.errors?.['required']">
+          rating is required
+      </span>
+      </div>
+      <div class="form-group">
+        <label for="stock">stock :</label>
+        <input type="stock" #stock="ngModel" [(ngModel)]="bookToUpdate.stock" name="stock" id="stock" class="form-control"
+          placeholder="stock">
+          <span class="text-danger"
+          *ngIf="(stock.touched || updatedForm.submitted) && stock.errors?.['required']">
+          stock is required
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="price">price :</label>
+      <input type="price" #price="ngModel" [(ngModel)]="bookToUpdate.price" name="price" id="categories" class="form-control"
+        placeholder="price">
+        <span class="text-danger"
+        *ngIf="(price.touched || updatedForm.submitted) && price.errors?.['required']">
+        Categories is required
+    </span>
+  </div>
+      <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-danger w-100">
+      </div>
+    </form>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions >
+  <button mat-button mat-dialog-close>Cancel</button>&nbsp;
+  <button mat-button  cdkFocusInitial>Update</button>
+</mat-dialog-actions>
+
+</body>

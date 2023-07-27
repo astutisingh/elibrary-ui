@@ -1,0 +1,48 @@
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="nav-side-menu" style="float: left;">
+    <div class="brand">
+      <a routerLink="/home" style="text-decoration:none;">Admin Dashboard</a>
+    </div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a routerLink="/admin-dashboard">
+                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                  </a>
+                </li>
+
+                <li >
+                  <a routerLink="/create-books"><i class="fa fa-file-text-o fa-lg"></i> Create Books </a>
+                </li>
+
+
+                <li>
+                  <a routerLink="/book-list"><i class="fa fa fa-list fa-lg"></i> Book List</a>
+                </li>
+                
+
+                <li >
+                  <a routerLink="/rent-manager"><i class="fa fa-desktop fa-lg"></i> Rental Management</a>
+                </li>
+
+
+                 <li>
+                  <a href="#">
+                  <i class="fa fa-user fa-lg"></i> Profile
+                  </a>
+                  </li>
+
+                 <li data-toggle="collapse" data-target="#new" class="collapsed">
+                  <a routerLink="/order-manager"><i class="fa fa-check-circle fa-lg"></i> Order Management</a>
+                </li>
+
+            </ul>
+     </div>
+</div>

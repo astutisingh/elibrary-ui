@@ -1,0 +1,23 @@
+<app-header></app-header>
+<section class="section-products">
+    <div class="container">
+        <div class="row">
+            <!-- Single Product -->
+            <div class="items" *ngFor="let item of content">
+                <div id="product-1" class="single-product">
+                    <div class="part-1">
+                    </div>
+                    <div class="part-2">
+                        <img src="https://freepngimg.com/download/book/8-2-book-png-9.png" style="width: 200px; height:200px;">
+                        <h3 class="product-title">{{item.bookName}}</h3>
+                        <h4 class="product-price">{{item.price | currency:'INR':'symbol-narrow'}}</h4>&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-primary"  (click)="confirmSave(item.bookId)">Rent Now</button>
+                        <div class="indent">
+                        <button type="button"  class="btn btn-primary" (click)="addToCart(item.bookId)">Add to Cart</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Update Details</h1>
+<div mat-dialog-content>
+    <form #updatedForm="ngForm" (ngSubmit)="updatedForm.form.valid && confirmSave(updatedForm)">
+        <div class="form-group">
+          <label for="status">status :</label>
+          <!-- <input type="text" #status [(ngModel)]="rentToUpdate.status" name="status" id="status" class="form-control" placeholder="status"> -->
+          <select class="form-control" #status (change)="onSelected(status.value)">
+            <option default>processing</option>
+            <option>confirmed</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="startDate">startDate :</label>
+          <input type="text" #startDate="ngModel" [(ngModel)]="rentToUpdate.startDate" name="startDate" id="startDate" class="form-control"
+            placeholder="startDate"  required>
+            <span class="text-danger"
+                          *ngIf="(startDate.touched || updatedForm.submitted) && startDate.errors?.['required']">
+                          startDate is required
+                      </span>
+        </div>
+        <div class="form-group">
+          <label for="endDate">endDate :</label>
+          <input type="endDate" #endDate="ngModel" [(ngModel)]="rentToUpdate.endDate" name="endDate" id="endDate" class="form-control"
+            placeholder="endDate" required>
+            <span class="text-danger"
+            *ngIf="(endDate.touched || updatedForm.submitted) && endDate.errors?.['required']">
+            endDate is required
+        </span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-danger w-100">
+          </div>
+      </form>
+    </div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>

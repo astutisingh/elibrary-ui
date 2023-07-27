@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div style="display: flex; padding-left: 5%;" *ngIf="isLoggedIn">
+    <div class="tab" >
+        <div class="mt-10" >
+          <h1>Order History</h1>
+          <div>
+          <table class="table table-bordered" >
+            <thead class="thead">
+              <tr >
+                <th>Order Id</th>
+                <th>Amount Due</th>
+                <th>View Books</th>
+                <th>Order Status</th>
+                <th>Order Date</th>
+                <th>Delivery Date</th>
+              </tr>
+            </thead>
+            <tbody  class="tbody"  *ngFor="let menu  of orderList">
+              <tr >
+                <td>{{menu.orderId}}</td>
+                <td>{{menu.total}}</td>
+                <td>
+                    <div *ngFor="let j of menu.cart">
+                      <li><b>Book Name</b> : {{j.book.bookName}}</li>
+                      <li>Book Price : {{j.book.price}}</li>
+                      <li>Stock: {{j.book.stock}}</li>
+                      <li>Required Quantity: {{j.quantity}}</li>
+                    </div>
+                </td>
+                <td>{{menu.status}}</td>
+                <td>{{menu.orderDate}}</td>
+                
+                <td>
+                   <input type="text" name="deliveryDate" id="deliveryDate" #deliveryDate value="{{menu.deliveryDate}}" style="width: 100px;" (change)="onEntry(menu.orderId,deliveryDate.value)">
+                </td>
+              </tr>      
+            </tbody>
+          </table>
+          </div>
+        </div>
+        </div>
+
+
+
+
+</div>

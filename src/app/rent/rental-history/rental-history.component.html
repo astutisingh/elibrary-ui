@@ -1,0 +1,77 @@
+<app-header></app-header>
+<h1 float="left">Rental History</h1>
+<table mat-table [dataSource]="this.list" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="User Name">
+        <th mat-header-cell *matHeaderCellDef> UserName </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Start Date">
+        <th mat-header-cell *matHeaderCellDef> Start Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="End Date">
+        <th mat-header-cell *matHeaderCellDef> End Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+        <!-- Action Column -->
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element" class="action-link"> 
+      <a (click)="confirmDelete(element.rentalId)" style="color:red;">Delete</a> |
+      <a (click)="openDialog(element['books'])" style="color:blue;">Book Details</a> |
+      <a (click)="openDialogForRating(element.rentalId)" data-bs-toggle="modal" data-bs-target="#PaymentModal" style="color:orange;">Give rating</a>
+    </td>
+  </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
+  <div class="modal fade" id="PaymentModal" tabindex="-1" role="dialog" aria-labelledby="PaymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Rating</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <form method="POST" class="register-form" id="register-form"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit(f)"
+            #f="ngForm"
+            novalidate>
+            <div class="form-group">
+              Rate us Out of 10: <input type="text" name="rating" id="rating" [(ngModel)]="form.rating" #rating="ngModel">
+              </div>
+              <div class="form-group form-button">
+                <input type="submit" name="submit" id="submit" class="form-submit" value="Submit"/>
+            </div>
+            </form>
+          </div>
+          <div class = "buttons">
+           
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>

@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Book Details</h1>
+<div mat-dialog-content>
+    <table mat-table [dataSource]="this.booksDetails" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="BookId">
+          <th mat-header-cell *matHeaderCellDef> Book ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.bookId}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="Book Name">
+          <th mat-header-cell *matHeaderCellDef> Book Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.bookName}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Book Type">
+          <th mat-header-cell *matHeaderCellDef> Book Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.bookType}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Rating">
+            <th mat-header-cell *matHeaderCellDef> Rating </th>
+            <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Stock">
+            <th mat-header-cell *matHeaderCellDef> Stock </th>
+            <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+          </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
